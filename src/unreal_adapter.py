@@ -50,9 +50,8 @@ class UnrealTCPServer:
             
             timestamp, x, y, z = struct.unpack(">Qfff", buffer)
             
-            
+            print(timestamp, x, y, z)
             if time.time() - start_t < 2:
-                print("passing")
                 continue
             
             times.append(timestamp)

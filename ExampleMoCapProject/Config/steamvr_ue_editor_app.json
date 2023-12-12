@@ -1,0 +1,18 @@
+{
+	"source": "UE",
+	"applications": [
+		{
+			"app_key": "application.generated.ue.examplemocapproject-23901901.unrealeditor.exe",
+			"launch_type": "url",
+			"url": "steam://launch/",
+			"action_manifest_path": "C:/Users/TK/Desktop/Unreal-Motion-Capture/ExampleMoCapProject/Config/SteamVRBindings/steamvr_manifest.json",
+			"strings":
+			{
+				"en_us":
+				{
+					"name": "ExampleMoCapProject-23901901 [UE Editor]"
+				}
+			}
+		}
+	]
+}
