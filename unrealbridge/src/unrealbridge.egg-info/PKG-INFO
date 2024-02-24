@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: unrealbridge
+Version: 2024.2.19
+Summary: Unreal Python TCP Bridge.
+Home-page: https://github.com/ucb-bar/Robot-Animation-Toolkit
+Author: Uncertainty.
+Author-email: t_k_233@outlook.email
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy
+
+# UnrealAdapter
+

@@ -4,7 +4,8 @@ import time
 
 import numpy as np
 
-class UnrealTCPServer:
+
+class UnrealTCPAdapter:
     def __init__(self, addr, port):
         self.addr = addr
         self.port = port
@@ -25,8 +26,6 @@ class UnrealTCPServer:
                 connected = True
             except:
                 pass
-            
-        # conn.recv(len(b"\r\n\r\n\x00\x00\x00\x00\x00\x00\x00\x00"))
         
         print("connected by", addr)
         
@@ -39,7 +38,7 @@ class UnrealTCPServer:
         while True:
             try:
                 conn.settimeout(1)
-                buffer = conn.recv(20)
+                buffer = conn.recv(1024)
             except TimeoutError:
                 conn.close()
                 break
@@ -47,8 +46,14 @@ class UnrealTCPServer:
             
             
             # print(len(buffer))
+            header = buffer[:12]
+            data = buffer[12:]
+            timestamp, n_transforms = struct.unpack(">QL", header)
             
-            timestamp, x, y, z = struct.unpack(">Qfff", buffer)
+            for i in range(n_transforms):
+                transform = data[i*28:(i+1)*28]
+                x, y, z, rx, ry, rz, rw = struct.unpack(">fffffff", transform)
+        
             
             print(timestamp, x, y, z)
             if time.time() - start_t < 2:
@@ -77,9 +82,7 @@ class UnrealTCPServer:
         self.sock.close()
         
 
-
-server = UnrealTCPServer("0.0.0.0", 8000)
-
-server.run()
-
-server.close()
+if __name__ == "__main__":
+    adapter = UnrealTCPAdapter("0.0.0.0", 8000)
+    adapter.run()
+    adapter.close()

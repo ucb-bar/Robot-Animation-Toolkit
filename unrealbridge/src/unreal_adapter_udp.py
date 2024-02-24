@@ -1,6 +1,9 @@
 import socket
 import struct
 
+
+### Still testing, unused for now ###
+
 class UnrealUDPServer:
     def __init__(self, addr, port):
         self.addr = addr
